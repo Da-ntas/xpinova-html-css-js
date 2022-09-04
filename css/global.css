@@ -1,6 +1,24 @@
+*, 
+*:after,
+*:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
 body{
     height: 100vh;
+    width: 100vw;
     overflow-x: hidden;
+    background-color: #F6F9FC;
+}
+a{
+    text-decoration: none;
 }
 
 #banner{
@@ -16,26 +34,56 @@ body{
 }
 .texto-principal-banner, 
 .texto-secundario-banner, 
-.texto-title-banner{
+.texto-title-banner,
+.texto-principal-header, 
+.texto-secundario-header, 
+.texto-title-header{
     color: #F1F6FA;
 }
 
 .form-box-input{
     border: 2px solid #112740;
-        border-radius: 10px;
+    border-radius: 10px;
 }
 
-.form-submit, .form-submit:hover{
+.texto-title{
+    color: #707382;
+    font-weight: 700;
+}
+
+.form-submit, 
+.form-submit:hover,
+.button,
+.button:hover{
     background: #A0C9F7;
     border-radius: 20px;
     color: #F1F6FA;
 }
 
-.form-submit:hover{
+.form-submit:hover,
+.button:hover,
+.button:focus{
     font-weight: bold;
     background: #85B1EE;
+    color: #F1F6FA;
 }
 
 .margintop{
     margin-top: 150px;
+}
+
+#searchBar{
+    height: 15%;
+}
+
+.border-search{
+    border: 1px solid #E3E5EF;
+    height: 100%;
+    width: 95%;
+}
+
+#cardTable{
+    width: 95%;
+    height: 75%;
+    background-color: #FFF;
 }

@@ -1,0 +1,17 @@
+#header{
+    background: #6998E6;
+    color: #F1F6FA;
+    height: 10%;
+    position: relative;
+}
+
+#sideNav{
+    background-color: #F1F6FA;
+    position: absolute;
+}
+
+.icon-close{
+    position: relative;
+    top: -35%;
+    left: 100%;
+}
