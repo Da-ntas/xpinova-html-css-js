@@ -1,0 +1,41 @@
+body{
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+#banner{
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 106, 254, 0.28) 0%, rgba(223, 235, 254, 0.28) 100%), linear-gradient(130.86deg, #7EC4FB 0%, rgba(87, 153, 226, 0.89) 100%);
+    background-blend-mode: overlay, normal;
+}
+
+.texto-principal{
+    color: #707382;
+}
+.texto-secundario{
+    color: #9FA2B1;
+}
+.texto-principal-banner, 
+.texto-secundario-banner, 
+.texto-title-banner{
+    color: #F1F6FA;
+}
+
+.form-box-input{
+    border: 2px solid #112740;
+        border-radius: 10px;
+}
+
+.form-submit, .form-submit:hover{
+    background: #A0C9F7;
+    border-radius: 20px;
+    color: #F1F6FA;
+}
+
+.form-submit:hover{
+    font-weight: bold;
+    background: #85B1EE;
+}
+
+.margintop{
+    margin-top: 150px;
+}
