@@ -1,7 +1,32 @@
-const burguer = document.getElementById("icon-burguer")
-const close = document.getElementById("icon-close")
-const sidenav = document.getElementById("sideNav")
+const listaClientes = document.getElementById("listaClientes")
+const cadastrarClientes = document.getElementById("cadastrarClientes")
+const listaTarefas = document.getElementById("listaTarefas")
+const nav = document.getElementById("nav")
 
 function showSideNav() {
-    sidenav.style.display = "block !important"
+    nav.style.display = "block"
 }
+
+function hideSideNav(){
+    nav.style.display = "none"
+}
+
+function getCurrentURL () {
+    let url = new URL (window.location.href);
+    let mainURL = url.pathname.split('/');
+    return mainURL[1]
+}
+
+if(getCurrentURL().includes("lista_clientes")){
+    listaClientes.style.fontSize = "25px";
+    listaClientes.style.fontWeight = "500";
+}
+if(getCurrentURL().includes("cadastrar_cliente")){
+    cadastrarClientes.style.fontSize = "25px";
+    cadastrarClientes.style.fontWeight = "500";
+}
+if(getCurrentURL().includes("lista_tarefas")){
+    listaTarefas.style.fontSize = "25px";
+    listaTarefas.style.fontWeight = "500";
+}
+  

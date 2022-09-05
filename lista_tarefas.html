@@ -19,8 +19,8 @@
         <div class="fixed-top" id="header">
             <div class="row h-100 d-flex align-items-center ps-4 pe-4">
                 <!-- sidenav -->
-                <div class="col-1" id="burger">
-                    <span class="iconify" data-icon="bi:list" style="color: white;" data-width="32"></span>
+                <div class="col-1">
+                    <span class="iconify icon-burguer" data-icon="bi:list" style="color: white;" data-width="32" onclick="showSideNav()"></span>
                 </div>
                 <!-- fim sidenav -->
                 <!-- col nom empresa -->
@@ -37,19 +37,41 @@
             </div>
         </div>
         <!-- fim header component -->
+        <!-- side nav -->
+        <div id="nav" style="background-color: rgba(0, 0, 0, 0.25);">
+            <div id="sideNav">
+                <div class="h-100 d-flex align-items-start justify-content-center flex-lg-column p-5">
+                    <div class="row icon-close">
+                        <span class="iconify" data-icon="carbon:close-filled" style="color: #112740;" data-width="24" id="close" onclick="hideSideNav()"></span>
+                    </div>
+                    <div class="row w-100 d-flex align-items-start justify-content-center flex-lg-column options">
+                        <div class="row">
+                            <a class="texto-principal" id="listaClientes" href="lista_clientes.html">Lista de clientes</a>
+                        </div>
+                        <div class="row mt-2">
+                            <a class="texto-principal" id="cadastrarClientes" href="#">Cadastrar Clientes</a>
+                        </div>
+                        <div class="row mt-2">
+                            <a class="texto-principal" id="listaTarefas" href="lista_tarefas.html">Lista de tarefas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- fim side nav -->
 
         <div class="row h-100 w-100 d-flex justify-content-center ps-4 pe-4" id="content">
             <!-- topo components -->
             <div class="row w-100 h-5" id="cabecalho">
                 <!-- col nomPagina -->
                 <div class="col mt-4 ms-5">
-                    <h1 class="texto-title">Clientes</h1>
+                    <h1 class="texto-title">Tarefas</h1>
                 </div>
                 <!-- fim col nomPagina -->
                 <!-- col botoes -->
                 <div class="col-3 mt-4">
                         <button class="btn button w-5 mt-4">Criar</button>
-                        <button class="btn button w-5 mt-4">Relacionar Tarefa</button>
+                        <button class="btn button w-5 mt-4">Relacionar Cliente</button>
                 </div>
                 <!-- fim col botoes -->
             </div>
@@ -61,10 +83,11 @@
                         <label for="cliente" class="texto-principal">Cliente</label>
                         <div class="col d-flex">
                             <select class="form-select w-25" name="cliente" aria-label="Clientes" id="clientes">
-                                <option selected>Clientes</option>
+                                <option selected>Tarefas</option>
                                 <option value="">TODOS</option>
-                                <option value="100">XP INOVA</option>
-                                <option value="2100">ZEZINHO</option>
+                                <option value="FIN">FINALIZADO</option>
+                                <option value="PEND">PENDENTE</option>
+                                <option value="RLZ">REALIZAR</option>
                             </select>
                             <button class="btn button w-5 ms-2">
                                 <span class="iconify" data-icon="fa:search" style="color: white;" data-width="24"></span>
@@ -76,30 +99,33 @@
             <!-- fim search components -->
             <div class="row h-100 w-100" id="cardComponent">
                 <div class="mt-4 ms-5 p-5" id="cardTable">
-                    <table class="table table-hover">
+                    <table class="table table-hover"> 
                         <thead>
                             <tr>
-                                <th scope="col">Nome cliente</th>
-                                <th scope="col">CNPJ</th>
-                                <th scope="col">CPF</th>
-                                <th scope="col">Tributação</th>
-                                <th scope="col">Código acesso</th>
+                                <th scope="col">Nome tarefa</th>
+                                <th scope="col">Clientes alocados</th>
+                                <th scope="col">Status da tarefa</th>
+                                <th scope="col">Tarefa</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">XP Inova</th>
-                                <td>01234567901234</td>
-                                <td>012345678</td>
-                                <td>Simples Nacional</td>
-                                <td>19238</td>
+                                <th scope="row">Tarefa 1</th>
+                                <td>Zezinho</td>
+                                <td>Pendente</td>
+                                <td>Aaaaaaaaaaa</td>
                             </tr>
                             <tr>
-                                <th scope="row">XP Teste</th>
-                                <td>01234367601234</td>
-                                <td>012342668</td>
-                                <td>MEI</td>
-                                <td>12378</td>
+                                <th scope="row">Tarefa 2</th>
+                                <td>XP INOVA</td>
+                                <td>Fazendo</td>
+                                <td>Bbbbbbbb</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Tarefa 2</th>
+                                <td>XP INOVA</td>
+                                <td>Finalizado</td>
+                                <td>Bbbbbbbb</td>
                             </tr>
                         </tbody>
                     </table>
@@ -114,4 +140,5 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
     <script src="./script/login.js"></script>
+    <script src="./script/sidenav.js"></script>
 </html>

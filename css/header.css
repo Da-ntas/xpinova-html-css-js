@@ -3,15 +3,40 @@
     color: #F1F6FA;
     height: 10%;
     position: relative;
+    z-index: 99;
+}
+
+#nav{
+    
+    position: fixed;
+    z-index: 100;
+    display: none;
+    width: 150%;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
 }
 
 #sideNav{
     background-color: #F1F6FA;
-    position: absolute;
+    height: 100%;
+    margin-left: -11px;
+    width: 25%;
 }
 
 .icon-close{
     position: relative;
-    top: -35%;
+    top: -50%;
     left: 100%;
+}
+
+.icon-close,
+.icon-burguer{
+    
+    cursor: pointer;
+}
+
+.options{
+    margin-top: -150px;
 }

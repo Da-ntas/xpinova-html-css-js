@@ -1,3 +1,3 @@
 function login() {
-    window.location.href = "lista_cliente.html"
+    window.location.href = "lista_clientes.html"
 }

@@ -11,6 +11,11 @@
     width: 0;  /* Remove scrollbar space */
     background: transparent;  /* Optional: just make scrollbar invisible */
 }
+
+html{
+    height: 100vh;
+    width: 100vw;
+}
 body{
     height: 100vh;
     width: 100vw;
@@ -61,6 +66,7 @@ a{
 }
 
 .form-submit:hover,
+.form-submit:focus,
 .button:hover,
 .button:focus{
     font-weight: bold;
