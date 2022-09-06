@@ -18,7 +18,7 @@ function hideSideNav(){
 function getCurrentURL () {
     let url = new URL (window.location.href);
     let mainURL = url.pathname.split('/');
-    return mainURL[1]
+    return mainURL[2]
 }
 
 if(getCurrentURL().includes("lista_clientes")){
