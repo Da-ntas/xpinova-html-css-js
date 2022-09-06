@@ -6,23 +6,26 @@
     z-index: 99;
 }
 
-#nav{
+/* #nav{
     
+} */
+
+#sideNav{
+    background-color: #F1F6FA;
     position: fixed;
     z-index: 100;
-    display: none;
+    /* display: none; */
     width: 150%;
     top: 0px;
     left: 0px;
     bottom: 0px;
     right: 0px;
-}
-
-#sideNav{
-    background-color: #F1F6FA;
     height: 100%;
     margin-left: -11px;
     width: 25%;
+
+    transform: translateX(-100%);
+    opacity: 0;
 }
 
 .icon-close{
@@ -39,4 +42,31 @@
 
 .options{
     margin-top: -150px;
+}
+
+#sideNav.animate{
+    animation-name: opNavbar;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+#sideNav.removeanimate{
+    animation-name: opNavbar;
+    animation-duration: 2s;
+    animation-direction: reverse;
+    animation-fill-mode: forwards;
+}
+
+@keyframes opNavbar {
+    to{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes clNavbar {
+    to{
+        transform: translateX(-100%);
+        opacity: 0;
+    }
 }

@@ -1,20 +1,24 @@
 const listaClientes = document.getElementById("listaClientes")
 const cadastrarClientes = document.getElementById("cadastrarClientes")
 const listaTarefas = document.getElementById("listaTarefas")
-const nav = document.getElementById("nav")
+const nav = document.getElementById("sideNav")
 
 function showSideNav() {
-    nav.style.display = "block"
+    nav.classList.remove("removeanimate");
+    nav.classList.add("animate");
 }
 
 function hideSideNav(){
-    nav.style.display = "none"
+    nav.classList.remove("animate");
+    nav.classList.add("removeanimate");
 }
+
+
 
 function getCurrentURL () {
     let url = new URL (window.location.href);
     let mainURL = url.pathname.split('/');
-    return mainURL[2]
+    return mainURL[1]
 }
 
 if(getCurrentURL().includes("lista_clientes")){
