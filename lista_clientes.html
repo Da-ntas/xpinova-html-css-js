@@ -68,12 +68,114 @@
                 <!-- fim col nomPagina -->
                 <!-- col botoes -->
                 <div class="col-3 mt-4">
-                        <button class="btn button w-5 mt-4">Criar</button>
-                        <button class="btn button w-5 mt-4">Relacionar Tarefa</button>
+                        <button class="btn button w-5 mt-4" data-bs-toggle="modal" data-bs-target="#modalCliente">Criar</button>
+                        <button class="btn button w-5 mt-4" data-bs-toggle="modal" data-bs-target="#modalRelacionarTarefa">Relacionar Tarefa</button>
                 </div>
                 <!-- fim col botoes -->
             </div>
             <!-- fim topo components -->
+
+            <!-- modais -->
+                <!-- modal criação -->
+                <div class="modal fade" id="modalCliente" tabindex="-1" aria-labelledby="modalClienteLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Criar cliente</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- formulario criação de cliente -->
+                            <form class="d-flex align-items-center flex-lg-column w-100" id="formCriarCliente">
+                                <!-- input nome do cliente -->
+                                <div class="formGroup w-100">
+                                    <label for="nomCliente" class="texto-principal">Nome do cliente</label>
+                                    <input type="text" name="nomCliente" id="nomCliente" class="form-control w-100 form-box-input">
+                                </div>
+                                <!-- fim input nome do cliente -->
+                                <!-- input cnpj -->
+                                <div class="formGroup w-100 mt-3">
+                                    <label for="cnpjCliente" class="texto-principal">CNPJ</label>
+                                    <input type="number" name="cnpjCliente" id="cnpjCliente" class="form-control w-100 form-box-input">
+                                </div>
+                                <!-- fim input cnpj -->
+                                <!-- input cpf -->
+                                <div class="formGroup w-100 mt-3">
+                                    <label for="cpfCliente" class="texto-principal">CPF</label>
+                                    <input type="number" name="cpfCliente" id="cpfCliente" class="form-control w-100 form-box-input">
+                                </div>
+                                <!-- fim input cpf -->
+                                <!-- input tributação -->
+                                <div class="formGroup w-100 mt-3">
+                                    <label for="tributacaoCliente" class="texto-principal">Tributação</label>
+                                    <input type="text" name="tributacaoCliente" id="tributacaoCliente" class="form-control w-100 form-box-input">
+                                </div>
+                                <!-- fim input tributação -->
+                                <!-- input código de acesso -->
+                                <div class="formGroup w-100 mt-3">
+                                    <label for="codAcessoCliente" class="texto-principal">Código de acesso</label>
+                                    <input type="number" name="codAcessoCliente" id="codAcessoCliente" class="form-control w-100 form-box-input">
+                                </div>
+                                <!-- fim input código de acesso  -->
+                            </form>
+                            <!-- fim formulario criação de cliente -->
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" form="formCriarCliente" value="Submit" class="btn btn-primary">Adicionar</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- fim modal criação -->
+                <!-- modal relacionar tarefa -->
+                <!-- modal criação -->
+                <div class="modal fade" id="modalRelacionarTarefa" tabindex="-1" aria-labelledby="modalRelacionarTarefaLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Relacionar tarefa</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- formulario criação de cliente -->
+                            <form class="d-flex align-items-center flex-lg-column w-100" id="formCriarCliente">
+                                <!-- select cliente -->
+                                <div class="formGroup w-100">
+                                    <label for="selectCliente" class="texto-principal">Selecionar cliente</label>
+                                    <select class="form-select w-100" name="selectCliente" aria-label="selectCliente" id="selectCliente">
+                                        <option selected>Clientes</option>
+                                        <option value="">TODOS</option>
+                                        <option value="100">XP INOVA</option>
+                                        <option value="2100">ZEZINHO</option>
+                                    </select>
+                                </div>
+                                <!-- fim select cliente -->
+                                <!-- select tarefa -->
+                                <div class="formGroup w-100">
+                                    <label for="selectTarefa" class="texto-principal">Selecionar tarefa</label>
+                                    <select class="form-select w-100" name="selectTarefa" aria-label="selectTarefa" id="selectTarefa">
+                                        <option selected>Tarefas</option>
+                                        <option value="">Fazer algo</option>
+                                        <option value="100">Repassar isso</option>
+                                        <option value="2100">Inventar isso</option>
+                                    </select>
+                                </div> 
+                                <!-- fim select tarefa -->
+                            </form>
+                            <!-- fim formulario criação de cliente -->
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" form="formCriarCliente" value="Submit" class="btn btn-primary">Adicionar</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- fim modal criação -->
+                <!-- fim modal relacionar tarefa -->
+            <!-- fim modais -->
+            
             <!-- search components -->
             <div class="row w-100" id="searchBar">
                 <div class="w-100 mt-4 ms-5">
@@ -131,8 +233,9 @@
     <!-- fim container -->
 </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./script/login.js"></script>
     <script src="./script/sidenav.js"></script>
 </html>

@@ -47,14 +47,14 @@
 #sideNav.animate{
     animation-name: opNavbar;
     animation-duration: 1s;
-    animation-fill-mode: forwards;
+    animation-fill-mode: both;
 }
 
 #sideNav.removeanimate{
     animation-name: opNavbar;
     animation-duration: 2s;
     animation-direction: reverse;
-    animation-fill-mode: forwards;
+    animation-fill-mode: both;
 }
 
 @keyframes opNavbar {
