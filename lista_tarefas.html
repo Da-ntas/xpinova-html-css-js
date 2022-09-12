@@ -66,12 +66,102 @@
                 <!-- fim col nomPagina -->
                 <!-- col botoes -->
                 <div class="col-3 mt-4">
-                        <button class="btn button w-5 mt-4">Criar</button>
-                        <button class="btn button w-5 mt-4">Relacionar Cliente</button>
+                        <button class="btn button w-5 mt-4" data-bs-toggle="modal" data-bs-target="#modalCriarTarefa">Criar</button>
+                        <button class="btn button w-5 mt-4" data-bs-toggle="modal" data-bs-target="#modalRelacionarCliente">Relacionar Cliente</button>
                 </div>
                 <!-- fim col botoes -->
             </div>
             <!-- fim topo components -->
+
+<!-- modais -->
+                <!-- modal criação -->
+                <div class="modal fade" id="modalCriarTarefa" tabindex="-1" aria-labelledby="modalCriarTarefaLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Criar tarefa</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- formulario criação de cliente -->
+                            <form class="d-flex align-items-center flex-lg-column w-100" id="formCriarCliente">
+                                <!-- input nome da tarefa -->
+                                <div class="formGroup w-100">
+                                    <label for="nomCliente" class="texto-principal">Nome da tarefa</label>
+                                    <input type="text" name="nomCliente" id="nomCliente" class="form-control w-100 form-box-input">
+                                </div>
+                                <!-- fim input nome da tarefa -->
+                                <!-- input status da tarefa -->
+                                <div class="formGroup w-100 mt-3">
+                                    <label for="cnpjCliente" class="texto-principal">Status da tarefa</label>
+                                    <input type="number" name="cnpjCliente" id="cnpjCliente" class="form-control w-100 form-box-input">
+                                </div>
+                                <!-- fim input status da tarefa-->
+                                <!-- input descrição da tarefa-->
+                                <div class="formGroup w-100 mt-3">
+                                    <label for="cpfCliente" class="texto-principal">Descrição da tarefa</label>
+                                    <input type="number" name="cpfCliente" id="cpfCliente" class="form-control w-100 form-box-input">
+                                </div>
+                                <!-- fim input descrição da tarefa -->
+                            </form>
+                            <!-- fim formulario criação de cliente -->
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" form="formCriarCliente" value="Submit" class="btn btn-primary">Adicionar</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- fim modal criação -->
+                <!-- modal relacionar tarefa -->
+                <!-- modal criação -->
+                <div class="modal fade" id="modalRelacionarCliente" tabindex="-1" aria-labelledby="modalRelacionarClienteLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Relacionar cliente</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- formulario criação de cliente -->
+                            <form class="d-flex align-items-center flex-lg-column w-100" id="formCriarCliente">
+                                <!-- select tarefa -->
+                                <div class="formGroup w-100 mt-3 mb-3">
+                                    <label for="selectTarefa" class="texto-principal">Selecionar tarefa</label>
+                                    <select class="form-select w-100" name="selectTarefa" aria-label="selectTarefa" id="selectTarefa">
+                                        <option selected>Tarefas</option>
+                                        <option value="">Fazer algo</option>
+                                        <option value="100">Repassar isso</option>
+                                        <option value="2100">Inventar isso</option>
+                                    </select>
+                                </div> 
+                                <!-- fim select tarefa -->
+                                <!-- select cliente -->
+                                <div class="formGroup w-100">
+                                    <label for="selectCliente" class="texto-principal">Selecionar cliente</label>
+                                    <select class="form-select w-100" name="selectCliente" aria-label="selectCliente" id="selectCliente">
+                                        <option selected>Clientes</option>
+                                        <option value="">TODOS</option>
+                                        <option value="100">XP INOVA</option>
+                                        <option value="2100">ZEZINHO</option>
+                                    </select>
+                                </div>
+                                <!-- fim select cliente -->
+                            </form>
+                            <!-- fim formulario criação de cliente -->
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" form="formCriarCliente" value="Submit" class="btn btn-primary">Adicionar</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- fim modal criação -->
+                <!-- fim modal relacionar tarefa -->
+            <!-- fim modais -->
+
             <!-- search components -->
             <div class="row w-100" id="searchBar">
                 <div class="w-100 mt-4 ms-5">
@@ -98,27 +188,52 @@
                     <table class="table table-hover"> 
                         <thead>
                             <tr>
+                                <th scope="col">Ação</th>
                                 <th scope="col">Nome tarefa</th>
                                 <th scope="col">Clientes alocados</th>
                                 <th scope="col">Status da tarefa</th>
-                                <th scope="col">Tarefa</th>
+                                <th scope="col">Descrição da tarefa</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">Tarefa 1</th>
+                                <td scope="row">
+                                    <button class="action_button">
+                                        <span class="iconify" data-icon="akar-icons:eye" data-width="16"></span>
+                                    </button class="action_button">
+                                    <button class="action_button">
+                                        <span class="iconify" data-icon="bi:x-lg" data-width="16"></span>
+                                    </button>
+                                </td>
+                                <td scope="row">Tarefa 1</td>
                                 <td>Zezinho</td>
                                 <td>Pendente</td>
                                 <td>Aaaaaaaaaaa</td>
                             </tr>
                             <tr>
-                                <th scope="row">Tarefa 2</th>
+                                <td scope="row">
+                                    <button class="action_button">
+                                        <span class="iconify" data-icon="akar-icons:eye" data-width="16"></span>
+                                    </button>
+                                    <button class="action_button">
+                                        <span class="iconify" data-icon="bi:x-lg" data-width="16"></span>
+                                    </button>
+                                </td>
+                                <td scope="row">Tarefa 2</td>
                                 <td>XP INOVA</td>
                                 <td>Fazendo</td>
                                 <td>Bbbbbbbb</td>
                             </tr>
                             <tr>
-                                <th scope="row">Tarefa 2</th>
+                                <td scope="row">
+                                    <button class="action_button">
+                                        <span class="iconify" data-icon="akar-icons:eye" data-width="16"></span>
+                                    </button>
+                                    <button class="action_button">
+                                        <span class="iconify" data-icon="bi:x-lg" data-width="16"></span>
+                                    </button>
+                                </td>
+                                <td scope="row">Tarefa 2</td>
                                 <td>XP INOVA</td>
                                 <td>Finalizado</td>
                                 <td>Bbbbbbbb</td>

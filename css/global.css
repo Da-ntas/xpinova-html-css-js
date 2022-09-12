@@ -93,3 +93,12 @@ a{
     height: 75%;
     background-color: #FFF;
 }
+
+.action_button{
+    border: 2px solid #E3E5EF;
+    background-color: inherit;
+    width: 25%;
+}
+.action_button:hover{
+    background-color: white;
+}
