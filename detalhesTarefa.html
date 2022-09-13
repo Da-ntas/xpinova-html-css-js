@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@200;500&family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/detalhes.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- container -->
+    <div class="row h-100" id="container">
+        <!-- header component -->
+        <div class="fixed-top" id="header">
+            <div class="row h-100 d-flex align-items-center ps-4 pe-4">
+                <!-- sidenav -->
+                <div class="col-1">
+                    <span class="iconify icon-burguer" data-icon="bi:list" style="color: white;" data-width="32" onclick="showSideNav()"></span>
+                </div>
+                <!-- fim sidenav -->
+                <!-- col nom empresa -->
+                <div class="col">
+                    <h1 class="texto-title-header">XP Inova</h1>
+                </div>
+                <!-- fim col nom empresa -->
+                <!-- col bem vindo -->
+                <div class="col-3 d-flex align-items-center">
+                    <h3 class="texto-principal-header">Bem vindo de volta</h3>
+                    <span class="iconify ms-3" data-icon="bx:down-arrow" style="color: white;"></span>
+                </div>
+                <!-- fim col bem vindo -->
+            </div>
+        </div>
+        <!-- fim header component -->
+        <!-- side nav -->
+            <div id="sideNav">
+                <div class="h-100 d-flex align-items-start justify-content-center flex-lg-column p-5">
+                    <div class="row icon-close">
+                        <span class="iconify" data-icon="carbon:close-filled" style="color: #112740;" data-width="24" id="close" onclick="hideSideNav()"></span>
+                    </div>
+                    <div class="row w-100 d-flex align-items-start justify-content-center flex-lg-column options">
+                        <div class="row">
+                            <a class="texto-principal" id="listaClientes" href="lista_clientes.html">Lista de clientes</a>
+                        </div>
+                        <div class="row mt-2">
+                            <a class="texto-principal" id="listaTarefas" href="lista_tarefas.html">Lista de tarefas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- fim side nav -->
+
+        <div class="row h-100 w-100 d-flex justify-content-center ps-4 pe-4" id="content">
+            <!-- topo components -->
+            <div class="row w-100 h-5" id="cabecalho">
+                <!-- col nomPagina -->
+                <div class="col mt-4 ms-5">
+                    <h1 class="texto-title">Detalhes cliente</h1>
+                </div>
+                <!-- fim col nomPagina -->
+                <!-- col botoes -->
+                <div class="col-2 mt-2">
+                        <button class="btn button w-5 mt-4" onclick="goBack()">Voltar</button>
+                        <button class="btn button w-5 mt-4" onclick="editarCliente(100)">Editar</button>
+                </div>
+                <!-- fim col botoes -->
+            </div>
+            <!-- fim topo components -->
+
+            <div class="row h-100 w-100" id="cardComponent">
+                <div class="mt-4 ms-5 p-5" id="cardTable">
+                    <div class="row w-100 row-detalhes">
+                        <div class="col w-50 text-name-detalhes">Nome da tarefa</div>
+                        <div class="col w-50 text-detalhes" id="nomCliente">XP INOVA</div>
+                    </div>
+                    <div class="row w-100 row-detalhes">
+                        <div class="col w-50 text-name-detalhes">Clientes alocados</div>
+                        <div class="col w-50 text-detalhes" id="nomCliente">01234567901234</div>
+                    </div>
+                    <div class="row w-100 row-detalhes">
+                        <div class="col w-50 text-name-detalhes">Status da tarefa</div>
+                        <div class="col w-50 text-detalhes" id="nomCliente">012345678</div>
+                    </div>
+                    <div class="row w-100 row-detalhes">
+                        <div class="col w-50 text-name-detalhes">Descrição da tarefa</div>
+                        <div class="col w-50 text-detalhes" id="nomCliente">Simples Nacional</div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    <!-- fim container -->
+    
+</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./script/login.js"></script>
+    <script src="./script/sidenav.js"></script>
+    <script src="./script/global.js"></script>
+    <script src="./script/detalhesCliente.js"></script>
+</html>

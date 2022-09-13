@@ -31,10 +31,12 @@ a{
     background-blend-mode: overlay, normal;
 }
 
-.texto-principal{
+.texto-principal,
+.text-name-detalhes{
     color: #707382;
 }
-.texto-secundario{
+.texto-secundario,
+.text-detalhes{
     color: #9FA2B1;
 }
 .texto-principal-banner, 
