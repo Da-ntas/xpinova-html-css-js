@@ -66,8 +66,8 @@
                 <!-- fim col nomPagina -->
                 <!-- col botoes -->
                 <div class="col-2 mt-2">
-                        <button class="btn button w-5 mt-4" data-bs-toggle="modal" data-bs-target="#modalCliente">Criar</button>
-                        <button class="btn button w-5 mt-4" data-bs-toggle="modal" data-bs-target="#modalRelacionarTarefa">Relacionar Tarefa</button>
+                        <button class="btn button w-5 mt-4" data-bs-toggle="modal" data-bs-target="#modalCliente" id="criarCliente">Criar</button>
+                        <button class="btn button w-5 mt-4" data-bs-toggle="modal" data-bs-target="#modalRelacionarTarefa" id="relacionarTarefa">Relacionar Tarefa</button>
                 </div>
                 <!-- fim col botoes -->
             </div>
@@ -141,22 +141,16 @@
                                 <!-- select cliente -->
                                 <div class="formGroup w-100">
                                     <label for="selectCliente" class="texto-principal">Selecionar cliente</label>
-                                    <select class="form-select w-100" name="selectCliente" aria-label="selectCliente" id="selectCliente">
-                                        <option selected>Clientes</option>
-                                        <option value="">TODOS</option>
-                                        <option value="100">XP INOVA</option>
-                                        <option value="2100">ZEZINHO</option>
+                                    <select class="form-select w-100" name="selectCliente" aria-label="selectCliente" id="selectClienteRelacionar">
+                                        <option disabled selected>Clientes</option>
                                     </select>
                                 </div>
                                 <!-- fim select cliente -->
                                 <!-- select tarefa -->
                                 <div class="formGroup w-100 mt-3 mb-3">
                                     <label for="selectTarefa" class="texto-principal">Selecionar tarefa</label>
-                                    <select class="form-select w-100" name="selectTarefa" aria-label="selectTarefa" id="selectTarefa">
-                                        <option selected>Tarefas</option>
-                                        <option value="">Fazer algo</option>
-                                        <option value="100">Repassar isso</option>
-                                        <option value="2100">Inventar isso</option>
+                                    <select class="form-select w-100" name="selectTarefa" aria-label="selectTarefa" id="selectTarefaRelacionar">
+                                        <option disabled selected>Tarefas</option>
                                     </select>
                                 </div> 
                                 <!-- fim select tarefa -->
@@ -180,11 +174,9 @@
                     <div class="border-search ps-3 pt-3">
                         <label for="cliente" class="texto-principal">Cliente</label>
                         <div class="col d-flex">
-                            <select class="form-select w-25" name="cliente" aria-label="Clientes" id="clientes">
-                                <option selected>Clientes</option>
+                            <select class="form-select w-25" name="cliente" aria-label="Clientes" id="dropdownCliente">
+                                <option disabled selected>Clientes</option>
                                 <option value="">TODOS</option>
-                                <option value="100">XP INOVA</option>
-                                <option value="2100">ZEZINHO</option>
                             </select>
                             <button class="btn button w-5 ms-2">
                                 <span class="iconify" data-icon="fa:search" style="color: white;" data-width="24"></span>
@@ -207,38 +199,7 @@
                                 <th scope="col">Código acesso</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td scope="row">
-                                    <button class="action_button" onclick="detalhesCliente(100)">
-                                        <span class="iconify" data-icon="akar-icons:eye" data-width="16"></span>
-                                    </button class="action_button">
-                                    <button class="action_button" onclick="deleteCliente(100)">
-                                        <span class="iconify" data-icon="bi:x-lg" data-width="16"></span>
-                                    </button>
-                                </td>
-                                <td scope="row">XP Inova</td>
-                                <td>01234567901234</td>
-                                <td>012345678</td>
-                                <td>Simples Nacional</td>
-                                <td>19238</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">
-                                    <button class="action_button" onclick="detalhesCliente(1010)">
-                                        <span class="iconify" data-icon="akar-icons:eye" data-width="16"></span>
-                                    </button class="action_button">
-                                    <button class="action_button" onclick="deleteCliente(1010)">
-                                        <span class="iconify" data-icon="bi:x-lg" data-width="16"></span>
-                                    </button>
-                                </td>
-                                <td scope="row">XP Teste</td>
-                                <td>01234367601234</td>
-                                <td>012342668</td>
-                                <td>Lucro Real</td>
-                                <td>12378</td>
-                            </tr>
-                        </tbody>
+                        <tbody id="tableBody"></tbody>
                     </table>
                 </div>
             </div>
@@ -253,5 +214,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./script/login.js"></script>
     <script src="./script/sidenav.js"></script>
+    <script src="./script/clientePageBuildInfo.js" type="module"></script>
     <script src="./script/cliente.js"></script>
 </html>
