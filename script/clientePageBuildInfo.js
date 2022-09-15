@@ -1,6 +1,10 @@
-import { dataCliente } from "../data/data.js"
-import { dataTributacao } from "../data/data.js"
-import { dataTarefas } from "../data/data.js"
+import {dataCliente} from "../data/data.js"
+import {dataTributacao} from "../data/data.js"
+import {dataTarefas}   from "../data/data.js"
+import { useGet } from "./requisitions.js";
+import { usePost } from "./requisitions.js";
+import { usePut } from "./requisitions.js";
+import { useDelete } from "./requisitions.js";
 
 window.addEventListener('load', buildInfos(dataCliente))
 
@@ -71,3 +75,43 @@ relTarefa.addEventListener('click', () => {
         listTarefa.appendChild(opt)
     })
 })
+
+let criarCliente = document.querySelector("#criarCliente")
+
+criarCliente.addEventListener('click', () => {
+    let tributacaoCliente = document.querySelector("#tributacaoCliente")
+    dataTributacao.map((i) => {
+        let opt = document.createElement('option');
+        opt.value = i.codTributacao;
+        opt.innerHTML = i.nomTributacao;
+        tributacaoCliente.appendChild(opt)
+    })
+})
+
+let formCriarCliente = document.querySelector("#formCriarCliente")
+
+formCriarCliente.addEventListener('submit', (event) => {
+    event.preventDefault()
+
+    let nomCliente = document.querySelector("#nomCliente").value
+    let cnpjCliente = document.querySelector("#cnpjCliente").value
+    let cpfCliente = document.querySelector("#cpfCliente").value
+    let tributacaoCliente = document.querySelector("#tributacaoCliente").value
+    let codAcessoCliente = document.querySelector("#codAcessoCliente").value
+    
+    let bodyClient = {
+        nomCliente: nomCliente,
+        cnpj: cnpjCliente,
+        cpf: cpfCliente,
+        codTributacao: tributacaoCliente,
+        codAcessos: codAcessoCliente,
+        codCliente: getCodCliente()
+    }
+
+    dataCliente.push(bodyClient)
+    setCodCliente();
+    buildInfos(dataCliente)
+})
+
+
+console.log(await useGet("v1/teste"))
