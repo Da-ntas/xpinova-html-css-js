@@ -1,4 +1,4 @@
-import {dataCliente} from "../data/data.js"
+// import {dataCliente} from "../data/data.js"
 import {dataTributacao} from "../data/data.js"
 import {dataTarefas}   from "../data/data.js"
 import { useGet } from "./requisitions.js";
@@ -6,17 +6,29 @@ import { usePost } from "./requisitions.js";
 import { usePut } from "./requisitions.js";
 import { useDelete } from "./requisitions.js";
 
-window.addEventListener('load', buildInfos(dataCliente))
+const dataCliente = await useGet("/clientes")
 
-window.addEventListener('load', () => {
+window.addEventListener('load', dataCliente && buildInfos(dataCliente), dataCliente && mountSelect())
+
+function mountSelect(){
     let list = document.querySelector("#dropdownCliente")
-    dataCliente.map((i) => {
+    
+    dataCliente && dataCliente.map((i) => {
         let opt = document.createElement('option');
         opt.value = i.codCliente;
         opt.innerHTML = i.nomCliente;
         list.appendChild(opt)
     })
-})
+}
+
+async function deleteC(codCliente){
+    let response = await useDelete('/clientes', { codCliente: codCliente})
+    
+    if(response)
+        buildInfos(response)
+}
+
+window.deleteCliente = deleteC
 
 function buildInfos(data){ 
     let table = document.querySelector("#tableBody")
@@ -26,12 +38,12 @@ function buildInfos(data){
 
         let tributacao = dataTributacao.filter((t) => t.codTributacao == i.codTributacao)
         table.insertAdjacentHTML('beforeend',`
-        <tr>
+        <tr id="${i.codCliente}">
             <td scope="row">
                 <button class="action_button" onclick="detalhesCliente(${i.codCliente})">
                     <span class="iconify" data-icon="akar-icons:eye" data-width="16"></span>
                 </button class="action_button">
-                <button class="action_button" onclick="deleteCliente(1010)">
+                <button class="action_button deleteCliente" value="${i.codCliente}" onclick="deleteCliente(${i.codCliente})">
                     <span class="iconify" data-icon="bi:x-lg" data-width="16"></span>
                 </button>
             </td>
@@ -44,6 +56,7 @@ function buildInfos(data){
     `)
     })
 }
+
 
 let list = document.querySelector("#dropdownCliente")
 
@@ -90,7 +103,7 @@ criarCliente.addEventListener('click', () => {
 
 let formCriarCliente = document.querySelector("#formCriarCliente")
 
-formCriarCliente.addEventListener('submit', (event) => {
+formCriarCliente.addEventListener('submit', async (event)=> {
     event.preventDefault()
 
     let nomCliente = document.querySelector("#nomCliente").value
@@ -104,14 +117,12 @@ formCriarCliente.addEventListener('submit', (event) => {
         cnpj: cnpjCliente,
         cpf: cpfCliente,
         codTributacao: tributacaoCliente,
-        codAcessos: codAcessoCliente,
-        codCliente: getCodCliente()
+        codAcessos: codAcessoCliente
     }
+    
+    let response = await usePost('/clientes', bodyClient)
 
-    dataCliente.push(bodyClient)
-    setCodCliente();
-    buildInfos(dataCliente)
+    if(response)
+        location.reload()
 })
 
-
-console.log(await useGet("v1/teste"))
