@@ -165,16 +165,24 @@
             <!-- search components -->
             <div class="row w-100" id="searchBar">
                 <div class="w-100 mt-4 ms-5">
-                    <div class="border-search ps-3 pt-3">
-                        <label for="cliente" class="texto-principal">Tarefa</label>
-                        <div class="col d-flex">
-                            <select class="form-select w-25" name="cliente" aria-label="Clientes" id="clientes">
-                                <option selected>Tarefas</option>
-                                <option value="">TODOS</option>
-                                <option value="FIN">FINALIZADO</option>
-                                <option value="PEND">PENDENTE</option>
-                                <option value="RLZ">REALIZAR</option>
-                            </select>
+                    <div class="border-search d-flex w-100 ps-3 pt-3">
+                        <!-- <div class="col w-100">
+                            <label for="tarefa" class="texto-principal">Tarefa</label>
+                            <div class="col d-flex">
+                                <select class="form-select w-25" name="tarefa" aria-label="Tarefas" id="dropdownTarefas">
+                                    <option selected disabled value="">Tarefa</option>
+                                    <option value="">TODOS</option>
+                                </select>
+                            </div>
+                        </div> -->
+                        <div class="col w-100">
+                            <label for="status" class="texto-principal">Status</label>
+                            <div class="col d-flex">
+                                <select class="form-select w-25" name="status" aria-label="status" id="dropdownStatus">
+                                    <option selected disabled value="">Status</option>
+                                    <option value="">TODAS</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -192,50 +200,7 @@
                                 <th scope="col">Descrição da tarefa</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td scope="row">
-                                    <button class="action_button" onclick="detalhesTarefa(10)">
-                                        <span class="iconify" data-icon="akar-icons:eye" data-width="16"></span>
-                                    </button class="action_button">
-                                    <button class="action_button" onclick="deleteTarefa(10)">
-                                        <span class="iconify" data-icon="bi:x-lg" data-width="16"></span>
-                                    </button>
-                                </td>
-                                <td scope="row">Tarefa 1</td>
-                                <td>Zezinho</td>
-                                <td>Pendente</td>
-                                <td>Aaaaaaaaaaa</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">
-                                    <button class="action_button" onclick="detalhesTarefa(11)">
-                                        <span class="iconify" data-icon="akar-icons:eye" data-width="16"></span>
-                                    </button>
-                                    <button class="action_button" onclick="deleteTarefa(11)">
-                                        <span class="iconify" data-icon="bi:x-lg" data-width="16"></span>
-                                    </button>
-                                </td>
-                                <td scope="row">Tarefa 2</td>
-                                <td>XP INOVA</td>
-                                <td>Fazendo</td>
-                                <td>Bbbbbbbb</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">
-                                    <button class="action_button" onclick="detalhesTarefa(12)">
-                                        <span class="iconify" data-icon="akar-icons:eye" data-width="16"></span>
-                                    </button>
-                                    <button class="action_button" onclick="deleteTarefa(12)">
-                                        <span class="iconify" data-icon="bi:x-lg" data-width="16"></span>
-                                    </button>
-                                </td>
-                                <td scope="row">Tarefa 2</td>
-                                <td>XP INOVA</td>
-                                <td>Finalizado</td>
-                                <td>Bbbbbbbb</td>
-                            </tr>
-                        </tbody>
+                        <tbody id="tableBody"> </tbody>
                     </table>
                 </div>
             </div>
@@ -252,4 +217,5 @@
     <script src="./script/login.js"></script>
     <script src="./script/sidenav.js"></script>
     <script src="./script/tarefa.js"></script>
+    <script src="./script/tarefaPageBuildInfo.js" type="module"></script>
 </html>

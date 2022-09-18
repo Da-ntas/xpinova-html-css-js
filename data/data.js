@@ -17,18 +17,12 @@ export const dataCliente = [
     }
 ]
 
-export const dataTarefas = [
-    {
-      "codTarefa": 1,
-      "nomTarefa": "Emissão do MEI",
-      "descTarefa": "Emitir MEI do cliente",
-      "clientes": [
-        {
-            "codCliente": 100
-        }
-      ]
-    }
-]
+export function formatStatus(status){
+  if(status == "FIN") return "FINALIZADO"
+  if(status == "PEND") return "PENDENTE"
+  if(status == "FZD") return "FAZENDO"
+  if(status == "ATV") return "ATIVO"
+}
 
 export const dataTributacao = [
     {
