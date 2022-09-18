@@ -1,25 +1,12 @@
 // import {dataCliente} from "../data/data.js"
-import {dataTributacao} from "../data/data.js"
-import {dataTarefas}   from "../data/data.js"
-import { useGet } from "./requisitions.js";
-import { usePost } from "./requisitions.js";
-import { usePut } from "./requisitions.js";
-import { useDelete } from "./requisitions.js";
+import {dataTributacao, dataTarefas} from "../data/data.js"
+import { buildInfos, mountSelect } from "./buildTable.mjs"
+import { useGet, usePost, usePut, useDelete } from "./requisitions.js";
 
 const dataCliente = await useGet("/clientes")
 
-window.addEventListener('load', dataCliente && buildInfos(dataCliente), dataCliente && mountSelect())
+window.addEventListener('load', dataCliente && buildInfos(dataCliente, "cliente"), dataCliente && mountSelect(dataCliente, "cliente"))
 
-function mountSelect(){
-    let list = document.querySelector("#dropdownCliente")
-    
-    dataCliente && dataCliente.map((i) => {
-        let opt = document.createElement('option');
-        opt.value = i.codCliente;
-        opt.innerHTML = i.nomCliente;
-        list.appendChild(opt)
-    })
-}
 
 async function deleteC(codCliente){
     let response = await useDelete('/clientes', { codCliente: codCliente})
@@ -30,41 +17,13 @@ async function deleteC(codCliente){
 
 window.deleteCliente = deleteC
 
-function buildInfos(data){ 
-    let table = document.querySelector("#tableBody")
-    table.innerHTML = ""
-
-    data.map((i) => {
-
-        let tributacao = dataTributacao.filter((t) => t.codTributacao == i.codTributacao)
-        table.insertAdjacentHTML('beforeend',`
-        <tr id="${i.codCliente}">
-            <td scope="row">
-                <button class="action_button" onclick="detalhesCliente(${i.codCliente})">
-                    <span class="iconify" data-icon="akar-icons:eye" data-width="16"></span>
-                </button class="action_button">
-                <button class="action_button deleteCliente" value="${i.codCliente}" onclick="deleteCliente(${i.codCliente})">
-                    <span class="iconify" data-icon="bi:x-lg" data-width="16"></span>
-                </button>
-            </td>
-            <td scope="row">${i.nomCliente}</td>
-            <td>${i.cnpj}</td>
-            <td>${i.cpf}</td>
-            <td>${tributacao[0].nomTributacao}</td>
-            <td>${i.codAcessos}</td>
-        </tr>
-    `)
-    })
-}
-
-
 let list = document.querySelector("#dropdownCliente")
 
 list.addEventListener('change', (event) => {event.preventDefault();
     let value = event.target.value
     let dataFiltered = dataCliente.filter((i) => i.codCliente == value)
 
-    value ? buildInfos(dataFiltered) : buildInfos(dataCliente)
+    value ? buildInfos(dataFiltered, "cliente") : buildInfos(dataCliente, "cliente")
 })
 
 

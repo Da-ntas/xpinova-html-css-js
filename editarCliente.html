@@ -61,40 +61,55 @@
             <div class="row w-100 h-5" id="cabecalho">
                 <!-- col nomPagina -->
                 <div class="col mt-4 ms-5">
-                    <h1 class="texto-title">Detalhes cliente</h1>
+                    <h1 class="texto-title">Editar cliente</h1>
                 </div>
                 <!-- fim col nomPagina -->
                 <!-- col botoes -->
+                <!-- col botoes -->
                 <div class="col-2 mt-2">
-                        <button class="btn button w-5 mt-4" onclick="goBackList()">Voltar</button>
-                        <button class="btn button w-5 mt-4" id="editCliente">Editar</button>
-                </div>
-                <!-- fim col botoes -->
+                    <button class="btn button w-5 mt-4" onclick="goBack()">Voltar</button>
+                    <button class="btn button w-5 mt-4" type="submit" form="formEditarCliente" value="Submit" id="salvarEditCliente">Salvar</button>
+            </div>
+            <!-- fim col botoes -->
             </div>
             <!-- fim topo components -->
 
             <div class="row h-100 w-100" id="cardComponent">
                 <div class="mt-4 ms-5 p-5" id="cardTable">
-                    <div class="row w-100 row-detalhes">
-                        <div class="col w-50 text-name-detalhes">Nome do cliente</div>
-                        <div class="col w-50 text-detalhes" id="nomCliente"></div>
-                    </div>
-                    <div class="row w-100 row-detalhes">
-                        <div class="col w-50 text-name-detalhes">CNPJ</div>
-                        <div class="col w-50 text-detalhes" id="cnpjCliente"></div>
-                    </div>
-                    <div class="row w-100 row-detalhes">
-                        <div class="col w-50 text-name-detalhes">CPF</div>
-                        <div class="col w-50 text-detalhes" id="cpfCliente"></div>
-                    </div>
-                    <div class="row w-100 row-detalhes">
-                        <div class="col w-50 text-name-detalhes">Tributação</div>
-                        <div class="col w-50 text-detalhes" value="10" id="tributacaoCliente"></div>
-                    </div>
-                    <div class="row w-100 row-detalhes">
-                        <div class="col w-50 text-name-detalhes">Código de acesso</div>
-                        <div class="col w-50 text-detalhes" id="codAcessoCliente"></div>
-                    </div>
+                    <form class="w-100" id="formEditarCliente">
+                        <!-- input nome do cliente -->
+                        <div class="formGroup w-100">
+                            <label for="nomCliente" class="texto-principal">Nome do cliente</label>
+                            <input type="text" name="nomCliente" id="nomCliente" class="form-control w-100 form-box-input" >
+                        </div>
+                        <!-- fim input nome do cliente -->
+                        <!-- input cnpj -->
+                        <div class="formGroup w-100 mt-3">
+                            <label for="cnpjCliente" class="texto-principal">CNPJ</label>
+                            <input type="number" name="cnpjCliente" id="cnpjCliente" class="form-control w-100 form-box-input" >
+                        </div>
+                        <!-- fim input cnpj -->
+                        <!-- input cpf -->
+                        <div class="formGroup w-100 mt-3">
+                            <label for="cpfCliente" class="texto-principal">CPF</label>
+                            <input type="number" name="cpfCliente" id="cpfCliente" class="form-control w-100 form-box-input" >
+                        </div>
+                        <!-- fim input cpf -->
+                        <!-- input tributação -->
+                        <div class="formGroup w-100 mt-3">
+                            <label for="tributacaoCliente" class="texto-principal">Tributação</label>
+                            <select class="form-select w-100" name="selectCliente" aria-label="tributacaoCliente" id="tributacaoCliente">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <!-- fim input tributação -->
+                        <!-- input código de acesso -->
+                        <div class="formGroup w-100 mt-3 mb-3">
+                            <label for="codAcessoCliente" class="texto-principal">Código de acesso</label>
+                            <input type="number" name="codAcessoCliente" id="codAcessoCliente" class="form-control w-100 form-box-input">
+                        </div>
+                        <!-- fim input código de acesso  -->
+                    </form>
                 </div>
             </div>
     
@@ -109,9 +124,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/mongodb@4.9.1/"></script>
-    <script src="./script/login.js"></script>
     <script src="./script/sidenav.js"></script>
     <script src="./script/global.js"></script>
-    <script src="./script/detalhesCliente.js" type="module"></script>
     <script src="./script/cliente.js"></script>
+    <script src="./script/editarCliente.js" type="module"></script>
 </html>
