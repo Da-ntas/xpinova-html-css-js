@@ -7,8 +7,12 @@ export function buildInfos(data, type){
 
         data.map((i) => {
 
-            let tributacao = dataTributacao.filter((t) => t.codTributacao == i.codTributacao)
-            let nomTributacao = tributacao[0]?.nomTributacao
+            let tributacao = dataTributacao.filter((t) => t.codTributacao == i.codTributacao);
+            let nomTributacao = tributacao[0]?.nomTributacao;
+            
+            let dataTarefa = i.tarefas;
+            let tarefas = [];
+            dataTarefa?.map((nC) => tarefas.push(nC.tarefas.nomTarefa));
 
             table.insertAdjacentHTML('beforeend',`
             <tr id="${i.codCliente}">
@@ -26,6 +30,7 @@ export function buildInfos(data, type){
                 <td scope="row">${i.nomCliente}</td>
                 <td>${i.cnpj}</td>
                 <td>${i.cpf}</td>
+                <td>${tarefas.toString()}</td>
                 <td>${nomTributacao}</td>
                 <td>${i.codAcessos}</td>
             </tr>
@@ -34,10 +39,14 @@ export function buildInfos(data, type){
     }
 
     if(type == "tarefa"){
-        let table = document.querySelector("#tableBody")
-        table.innerHTML = ""
-
+        let table = document.querySelector("#tableBody");
+        table.innerHTML = "";
+        
         data.map((i) => {
+            let dataCliente = i.clientes;
+            let nomes = [];
+            dataCliente?.map((nC) => nomes.push(nC.clientes.nomCliente));
+
             table.insertAdjacentHTML('beforeend',`      
             <tr>
             <td scope="row">
@@ -52,7 +61,7 @@ export function buildInfos(data, type){
                 </button>
             </td>
                 <td scope="row">${i.nomTarefa}</td>
-                <td>Zezinho</td>
+                <td>${nomes.toString()}</td>
                 <td>${formatStatus(i.status)}</td>
                 <td>${i.descTarefa}</td>
             </tr>
@@ -63,25 +72,25 @@ export function buildInfos(data, type){
 
 export function mountSelect(data, type){
     if(type == "cliente"){
-        let list = document.querySelector("#dropdownCliente")
+        let list = document.querySelector("#dropdownCliente");
         
         data && data.map((i) => {
             let opt = document.createElement('option');
             opt.value = i.codCliente;
             opt.innerHTML = i.nomCliente;
-            list.appendChild(opt)
+            list.appendChild(opt);
         })
     }
 
     if(type == "tarefa"){
-        let listSts = document.querySelector("#dropdownStatus")
+        let listSts = document.querySelector("#dropdownStatus");
         
         data && data.map((i) => {
 
             let optSts = document.createElement('option');
             optSts.value = i.status;
             optSts.innerHTML = formatStatus(i.status);
-            listSts.appendChild(optSts)
+            listSts.appendChild(optSts);
         })
         
     }

@@ -1,6 +1,6 @@
-let URL = "https://engtwm5daa70tp8.m.pipedream.net/v1/xpinova"
+// let URL = "https://engtwm5daa70tp8.m.pipedream.net/v1/xpinova"
 
-// let URL = "https://en6lcymx0ythtrt.m.pipedream.net/v1/xpinova"
+let URL = "https://en6lcymx0ythtrt.m.pipedream.net/v1/xpinova"
 
 export async function useGet(route){
     let {data: response} = await axios.get(`${URL}${route}`)
