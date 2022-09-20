@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/detalhes.css">
-    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="./utils/xp.png">
+    <title>Detalhes tarefa</title>
 </head>
 <body>
     <!-- container -->
@@ -66,8 +67,8 @@
                 <!-- fim col nomPagina -->
                 <!-- col botoes -->
                 <div class="col-2 mt-2">
-                        <button class="btn button w-5 mt-4" onclick="goBack()">Voltar</button>
-                        <button class="btn button w-5 mt-4" onclick="editarCliente(100)">Editar</button>
+                        <button class="btn button w-5 mt-4" onclick="goBackListaTarefa()">Voltar</button>
+                        <button class="btn button w-5 mt-4" id="editTarefa">Editar</button>
                 </div>
                 <!-- fim col botoes -->
             </div>
@@ -77,19 +78,19 @@
                 <div class="mt-4 ms-5 p-5" id="cardTable">
                     <div class="row w-100 row-detalhes">
                         <div class="col w-50 text-name-detalhes">Nome da tarefa</div>
-                        <div class="col w-50 text-detalhes" id="nomCliente">XP INOVA</div>
+                        <div class="col w-50 text-detalhes" id="nomTarefa"></div>
                     </div>
                     <div class="row w-100 row-detalhes">
                         <div class="col w-50 text-name-detalhes">Clientes alocados</div>
-                        <div class="col w-50 text-detalhes" id="nomCliente">01234567901234</div>
+                        <div class="col w-50 text-detalhes" id="clientesAlocados"></div>
                     </div>
                     <div class="row w-100 row-detalhes">
                         <div class="col w-50 text-name-detalhes">Status da tarefa</div>
-                        <div class="col w-50 text-detalhes" id="nomCliente">012345678</div>
+                        <div class="col w-50 text-detalhes" id="statusTarefa"></div>
                     </div>
                     <div class="row w-100 row-detalhes">
                         <div class="col w-50 text-name-detalhes">Descrição da tarefa</div>
-                        <div class="col w-50 text-detalhes" id="nomCliente">Simples Nacional</div>
+                        <div class="col w-50 text-detalhes" id="descTarefa"></div>
                     </div>
                 </div>
             </div>
@@ -107,5 +108,6 @@
     <script src="./script/login.js"></script>
     <script src="./script/sidenav.js"></script>
     <script src="./script/global.js"></script>
-    <script src="./script/detalhesCliente.js"></script>
+    <script src="./script/tarefa.js"></script>
+    <script src="./script/detalhesTarefa.js" type="module"></script>
 </html>

@@ -5,3 +5,7 @@ function goBack(){
 function goBackList(){
     location.href = "lista_clientes.html";
 }
+
+function goBackListaTarefa(){
+    location.href = "lista_tarefas.html";
+}

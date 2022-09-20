@@ -33,34 +33,31 @@ export function buildInfos(data, type){
         })
     }
 
-    if(type == "tarefa"){let table = document.querySelector("#tableBody")
-    table.innerHTML = ""
+    if(type == "tarefa"){
+        let table = document.querySelector("#tableBody")
+        table.innerHTML = ""
 
-    data.map((i) => {
-
-        let tributacao = dataTributacao.filter((t) => t.codTributacao == i.codTributacao)
-        let nomTributacao = tributacao[0]?.nomTributacao
-
-        table.insertAdjacentHTML('beforeend',`      
-        <tr>
-        <td scope="row">
-            <button class="action_button">
-                <span class="iconify" data-icon="akar-icons:eye" data-width="16"></span>
-            </button class="action_button">
-            <button class="action_button">
-                <span class="iconify" data-icon="clarity:pencil-solid" data-width="16"></span>
-            </button>
-            <button class="action_button deleteCliente">
-                <span class="iconify" data-icon="bi:x-lg" data-width="16"></span>
-            </button>
-        </td>
-            <td scope="row">${i.nomTarefa}</td>
-            <td>Zezinho</td>
-            <td>${formatStatus(i.status)}</td>
-            <td>${i.descTarefa}</td>
-        </tr>
-    `)
-    })
+        data.map((i) => {
+            table.insertAdjacentHTML('beforeend',`      
+            <tr>
+            <td scope="row">
+                <button class="action_button">
+                    <span class="iconify" data-icon="akar-icons:eye" data-width="16" onclick="detalhesTarefa(${i.codTarefa})"></span>
+                </button class="action_button">
+                <button class="action_button">
+                    <span class="iconify" data-icon="clarity:pencil-solid" data-width="16" onclick="editarTarefa(${i.codTarefa}, '${i.nomTarefa}', '${i.status}', '${i.descTarefa}')"></span>
+                </button>
+                <button class="action_button deleteCliente">
+                    <span class="iconify" data-icon="bi:x-lg" data-width="16" onclick="deletarTarefa()"></span>
+                </button>
+            </td>
+                <td scope="row">${i.nomTarefa}</td>
+                <td>Zezinho</td>
+                <td>${formatStatus(i.status)}</td>
+                <td>${i.descTarefa}</td>
+            </tr>
+        `)
+        })
     }
 }
 
@@ -77,14 +74,9 @@ export function mountSelect(data, type){
     }
 
     if(type == "tarefa"){
-        // let list = document.querySelector("#dropdownTarefas")
         let listSts = document.querySelector("#dropdownStatus")
         
         data && data.map((i) => {
-            // let opt = document.createElement('option');
-            // opt.value = i.codTarefa;
-            // opt.innerHTML = i.nomTarefa;
-            // list.appendChild(opt)
 
             let optSts = document.createElement('option');
             optSts.value = i.status;
