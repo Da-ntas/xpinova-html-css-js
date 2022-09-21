@@ -44,8 +44,6 @@ export function buildInfos(data, type){
         
         data.map((i) => {
             let dataCliente = i.clientes;
-            let nomes = [];
-            dataCliente?.map((nC) => nomes.push(nC.clientes.nomCliente));
 
             table.insertAdjacentHTML('beforeend',`      
             <tr>
@@ -61,7 +59,13 @@ export function buildInfos(data, type){
                 </button>
             </td>
                 <td scope="row">${i.nomTarefa}</td>
-                <td>${nomes.toString()}</td>
+                <td>
+                    <ul>
+                    ${dataCliente?.map((nC) => {
+                        return `<li key=${nC.clientes.codCliente}>${nC.clientes.nomCliente}</li>`
+                    })}
+                    </ul>
+                </td>
                 <td>${formatStatus(i.status)}</td>
                 <td>${i.descTarefa}</td>
             </tr>

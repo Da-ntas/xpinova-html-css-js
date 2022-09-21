@@ -13,10 +13,11 @@ document.querySelector("#editTarefa")?.addEventListener('click', (event) => {
     const urlParams = new URLSearchParams(queryString);
     let codTarefa = urlParams.get('codTarefa');
     let nomTarefa = document.querySelector("#nomTarefa").innerText;
-    let clientesAlocados = document.querySelector("#clientesAlocados").innerText;
+    let clientesAlocados = document.querySelector("#clientesAlocados").innerHTML;
+    console.log(clientesAlocados)
     let status = document.querySelector("#statusTarefa").innerText;
     let descTarefa = document.querySelector("#descTarefa").innerText;
 
-    window.location.href = `editarTarefa.html?codTarefa=${codTarefa}&nomTarefa=${nomTarefa}&clientesAlocados=${clientesAlocados}&statusTarefa=${status}&descTarefa=${descTarefa}`
+    // window.location.href = `editarTarefa.html?codTarefa=${codTarefa}&nomTarefa=${nomTarefa}&clientesAlocados=${clientesAlocados}&statusTarefa=${status}&descTarefa=${descTarefa}`
 })
 

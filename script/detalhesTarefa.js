@@ -15,10 +15,15 @@ if(dataTarefa){
     
     let dataCliente = dataTarefa[0]?.clientes;
     let nomes = [];
-    dataCliente?.map((nC) => nomes.push(`${nC.clientes.nomCliente}\n`));
+    dataCliente?.map((nC) => nomes.push(`${nC.clientes.nomCliente}`));
 
     nomTarefa.innerText = dataTarefa[0]?.nomTarefa;
     clientesAlocados.innerText = nomes.toString();
     status.innerText = dataTarefa[0]?.status;
     descTarefa.innerText = dataTarefa[0]?.descTarefa;
+
+     
+    // dataCliente?.map((nC) => {
+    //     return `<li key=${nC.clientes.codCliente}>${nC.clientes.nomCliente}</li>`
+    // });
 }
