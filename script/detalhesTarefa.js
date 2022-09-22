@@ -9,7 +9,6 @@ let dataTarefa = await useGet(`/tarefas?codTarefa=${codTarefa}`);
 function createList(data){
     let string = ""
     data.forEach(cliente => {
-        console.log(cliente)
         string = string + `<li key=${cliente.codCliente}>${cliente.clientes.nomCliente }</li>`
     });
     return string
