@@ -10,7 +10,7 @@ let dataCliente = await useGet(`/clientes?codCliente=${codCliente}`)
 function createList(data){
     let string = ""
     data.forEach(cliente => {
-        string = string + `<li key=${cliente.codTarefa}>${cliente.tarefas.nomTarefa}</li>`
+        string = string + `<li class="getCodTarefa" dataKey=${cliente.codTarefa}>${cliente.tarefas.nomTarefa}</li>`
     });
 
     return string

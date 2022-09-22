@@ -9,6 +9,16 @@ function editarCliente(codCliente, nomCliente, cnpj, cpf, nomTributacao, codAces
 
 document.querySelector("#editCliente")?.addEventListener('click', (event) => {
     event.preventDefault();
+    let stringCodTarefa = ""
+    let tarefasAlocadas = document.querySelectorAll(".getCodTarefa");
+    tarefasAlocadas.forEach((cliente, index) => {
+        let tarefaAttribute = cliente.getAttribute('dataKey')
+        if(index >= 1){
+            stringCodTarefa = stringCodTarefa + `,${tarefaAttribute}`
+        } 
+        else
+            stringCodTarefa = stringCodTarefa + `${tarefaAttribute}`
+    })
     
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -19,6 +29,6 @@ document.querySelector("#editCliente")?.addEventListener('click', (event) => {
     let nomTributacao = document.querySelector("#tributacaoCliente").innerText
     let codAcessoCliente =document.querySelector("#codAcessoCliente").innerText
 
-    window.location.href = `editarCliente.html?codCliente=${codCliente}&nomCliente=${nomCliente}&cnpj=${cnpjCliente}&cpf=${cpfCliente}&nomTributacao=${nomTributacao}&codAcesso=${codAcessoCliente}`
+    window.location.href = `editarCliente.html?codCliente=${codCliente}&nomCliente=${nomCliente}&cnpj=${cnpjCliente}&cpf=${cpfCliente}&nomTributacao=${nomTributacao}&codAcesso=${codAcessoCliente}&tarefasAlocadas=${stringCodTarefa}`
 })
 
