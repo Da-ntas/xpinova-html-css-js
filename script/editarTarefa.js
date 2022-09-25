@@ -1,4 +1,5 @@
 import { usePut, useGet } from './requisitions.js';
+import { dataCliente } from '../data/data.js'
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -17,67 +18,49 @@ if(codTarefa){
 }
 
 let newNomTarefa = document.querySelector('#nomTarefa')
-let arrayClientes = []
+let arrayClientes = [...clientesAlocados]
 let optionSelected = document.querySelector('option:checked').value
 let newDesc = document.querySelector("#descricao")
 
-function handleClick(event) {
-  let valueCheck = event.target.value;
-  if(event.target.checked){
-    arrayClientes.push(valueCheck)
-  }
-
-  if(arrayClientes.includes(valueCheck) && !event.target.checked){
-    let index = arrayClientes.indexOf(valueCheck)
-    if(index > -1){
-      arrayClientes.splice(index, 1)
-    }
-  }
-
-  console.log(arrayClientes)
-
-};
-
 window.addEventListener('load', async (event) => {
-  let response = await useGet('/clientes')
-  let stringElement = ""
+  // let response = await useGet('/clientes')
+  let response = dataCliente
+
   response?.map((i) => {
-    let check = false;
-    if(clientesAlocados.includes(i.codCliente)){
-      check = true
-      arrayClientes.push(i.codCliente )
-    }
     
-    let element = `
-      <div class="col">
-        <input class="form-check-input selectCliente" type="checkbox" value="${i.codCliente}" onClick="handleClick(this)" name="cliente" ${!check ? "" : "checked"}>
-        <label class="form-check-label" for="status">${i.nomCliente}</label>
-      </div>
-    `
-    checkClientes.insertAdjacentHTML('beforeend',element)
+    let div = document.createElement('div');
+    div.classList.add('selectItem');
+    div.id = i.codCliente;
+    div.innerText = i.nomCliente;
+
+    if(arrayClientes.includes(i.codCliente.toString())){
+      div.classList.add('selectItem_selected')
+    }
+
+    div.addEventListener('click', (event) => {
+      event.preventDefault();
+      let valueCheck = event.target.id.toString();
+
+      if(div.className.includes('selectItem_selected')){
+        if(arrayClientes.includes(valueCheck)){
+          let index = arrayClientes.indexOf(valueCheck)
+          if(index > -1){
+            arrayClientes.splice(index, 1)
+          }
+        }
+        div.classList.remove('selectItem_selected')
+      }
+      else{
+        div.classList.add('selectItem_selected');
+        arrayClientes.push(valueCheck)
+
+      }      
+    })
+    
+    checkClientes.appendChild(div)
   })
   
 })
-
-const boxes = document.querySelectorAll('.selectCliente');
-boxes.forEach(box => {
-  box.addEventListener('click', function handleClick(event) {
-    let valueCheck = event.target.value;
-    if(event.target.checked){
-      arrayClientes.push(valueCheck)
-    }
-
-    if(arrayClientes.includes(valueCheck) && !event.target.checked){
-      let index = arrayClientes.indexOf(valueCheck)
-      if(index > -1){
-        arrayClientes.splice(index, 1)
-      }
-    }
-
-    console.log(arrayClientes)
-
-  });
-});
 
 selectStatus.addEventListener('change', (event) => {
   optionSelected = event.target.value
@@ -88,7 +71,7 @@ newNomTarefa.addEventListener('change', (event) => {
 newDesc.addEventListener('change', (event) => {
   descTarefa = event.target.value
 })
-document.querySelector("#salvarEditCliente")?.addEventListener('click', async (event) => {
+document.querySelector("#salvarEditTarefa")?.addEventListener('click', async (event) => {
     event.preventDefault();
 
     //let nome -> nomTarefa
@@ -106,6 +89,7 @@ document.querySelector("#salvarEditCliente")?.addEventListener('click', async (e
         "status": optionSelected,
         "clienteRel": arrayFormatadoClientes
     }
+
     let {data: response} = await usePut('/tarefas', body)
 
     if(response){

@@ -129,3 +129,24 @@ a{
 .action_button:hover{
     background-color: white;
 }
+
+.selectLink{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    /* max-width: 200px; */
+    gap: 1px;
+}
+
+.selectItem{
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 3px;
+    transition: background 0.5s;
+}
+
+.selectItem_selected{
+    background-color: rgba(87, 153, 226, 0.89);
+    color: #F1F6FA;
+
+}
