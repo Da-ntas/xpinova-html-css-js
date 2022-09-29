@@ -2,8 +2,8 @@ function detalhesTarefa(codTarefa){
     window.location.href = `detalhesTarefa.html?codTarefa=${codTarefa}`
 }
 
-function editarTarefa(codTarefa, nomTarefa, status, descTarefa){
-    window.location.href = `editarTarefa.html?codTarefa=${codTarefa}&nomTarefa=${nomTarefa}&status=${status}&descTarefa=${descTarefa}`
+function editarTarefa(codTarefa, nomTarefa, status, descTarefa, codRelacionamentos){
+    window.location.href = `editarTarefa.html?codTarefa=${codTarefa}&nomTarefa=${nomTarefa}&status=${status}&descTarefa=${descTarefa}&codRelacionamentos=${codRelacionamentos}`
 }
 
 document.querySelector("#editTarefa")?.addEventListener('click', (event) => {
@@ -25,10 +25,11 @@ document.querySelector("#editTarefa")?.addEventListener('click', (event) => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     let codTarefa = urlParams.get('codTarefa');
+    let codRelacionamentos = urlParams.get('codRelacionamentos')
     let nomTarefa = document.querySelector("#nomTarefa").innerText;
     let status = document.querySelector("#statusTarefa").innerText;
     let descTarefa = document.querySelector("#descTarefa").innerText;
 
-    window.location.href = `editarTarefa.html?codTarefa=${codTarefa}&nomTarefa=${nomTarefa}&clientesAlocados=${stringCodCliente}&statusTarefa=${status}&descTarefa=${descTarefa}`
+    window.location.href = `editarTarefa.html?codTarefa=${codTarefa}&nomTarefa=${nomTarefa}&clientesAlocados=${stringCodCliente}&statusTarefa=${status}&descTarefa=${descTarefa}&codRelacionamentos=${codRelacionamentos}`
 })
 

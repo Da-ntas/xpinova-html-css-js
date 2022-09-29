@@ -10,7 +10,7 @@ let dataCliente = await useGet(`/clientes?codCliente=${codCliente}`)
 function createList(data){
     let string = ""
     data.forEach(cliente => {
-        string = string + `<li class="getCodTarefa" dataKey=${cliente.codTarefa}>${cliente.tarefas.nomTarefa}</li>`
+        string = string + `<li class="getCodTarefa" dataKey=${cliente.codTarefa}>${cliente.nomTarefa}</li>`
     });
 
     return string
@@ -34,6 +34,5 @@ if(dataCliente){
     cpf.innerText = dataCliente[0]?.cpf || ""
     tributacao.innerText = tributacaoData[0]?.nomTributacao || ""
     codAcesso.innerText = dataCliente[0]?.codAcessos || ""
-    // tarefas.innerText = listTarefa.toString() || "";
     tarefas.innerHTML = createList(dataTarefa)
 } 

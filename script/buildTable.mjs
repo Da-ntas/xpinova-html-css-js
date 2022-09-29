@@ -10,18 +10,20 @@ export function buildInfos(data, type){
             let tributacao = dataTributacao.filter((t) => t.codTributacao == i?.codTributacao);
             let nomTributacao = tributacao[0]?.nomTributacao;
             
-            let dataTarefa = i?.tarefas;
-            let tarefas = [];
-            let stringList = ""
-            dataTarefa?.map((nC) => stringList = stringList + `<li key=${nC?.codTarefa}>${nC?.tarefas?.nomTarefa}</li>`);
+            let stringList = "";
+            let arrRelacionamentos = [];
+            i?.tarefas?.map((nC) => {
+                stringList = stringList + `<li key=${nC?.codTarefa}>${nC?.nomTarefa}</li>`
+                arrRelacionamentos.push(nC.codRelacionamento)
+            });
 
             table.insertAdjacentHTML('beforeend',`
             <tr id="${i?.codCliente}">
                 <td scope="row">
-                    <button class="action_button" onclick="detalhesCliente(${i?.codCliente})">
+                    <button class="action_button" onclick="detalhesCliente(${i?.codCliente}, ${arrRelacionamentos.toString()})">
                         <span class="iconify" data-icon="akar-icons:eye" data-width="16"></span>
                     </button class="action_button">
-                    <button class="action_button" onclick="editarCliente(${i?.codCliente}, '${i?.nomCliente}', ${i?.cnpj}, ${i?.cpf}, '${nomTributacao}', ${i?.codAcessos})">
+                    <button class="action_button" onclick="editarCliente(${i?.codCliente}, '${i?.nomCliente}', ${i?.cnpj}, ${i?.cpf}, '${nomTributacao}', ${i?.codAcessos}, ${arrRelacionamentos.toString()})">
                         <span class="iconify" data-icon="clarity:pencil-solid" data-width="16"></span>
                     </button>
                     <button class="action_button deleteCliente" value="${i?.codCliente}" onclick="deleteCliente(${i?.codCliente})">
@@ -48,20 +50,21 @@ export function buildInfos(data, type){
         table.innerHTML = "";
         
         data.map((i) => {
-            let dataCliente = i?.clientes;
             let stringList = "";
-            dataCliente?.map((nC) => {
-                stringList = stringList +`<li key=${nC?.clientes?.codCliente}>${nC?.clientes?.nomCliente}</li>`
+            let arrRelacionamentos = [];
+            i?.clientes?.map((nC) => {
+                stringList = stringList +`<li key=${nC?.codCliente}>${nC?.nomCliente}</li>`
+                arrRelacionamentos.push(nC.codRelacionamento)
             })
 
             table.insertAdjacentHTML('beforeend',`      
             <tr>
             <td scope="row">
                 <button class="action_button">
-                    <span class="iconify" data-icon="akar-icons:eye" data-width="16" onclick="detalhesTarefa(${i?.codTarefa})"></span>
+                    <span class="iconify" data-icon="akar-icons:eye" data-width="16" onclick="detalhesTarefa(${i?.codTarefa}, ${arrRelacionamentos.toString()})"></span>
                 </button class="action_button">
                 <button class="action_button">
-                    <span class="iconify" data-icon="clarity:pencil-solid" data-width="16" onclick="editarTarefa(${i?.codTarefa}, '${i?.nomTarefa}', '${i?.status}', '${i?.descTarefa}')"></span>
+                    <span class="iconify" data-icon="clarity:pencil-solid" data-width="16" onclick="editarTarefa(${i?.codTarefa}, '${i?.nomTarefa}', '${i?.status}', '${i?.descTarefa}',  ${arrRelacionamentos.toString()})"></span>
                 </button>
                 <button class="action_button deleteCliente">
                     <span class="iconify" data-icon="bi:x-lg" data-width="16" onclick="deletarTarefa()"></span>

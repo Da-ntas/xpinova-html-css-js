@@ -1,5 +1,3 @@
-import axios from "axios"
-
 let URL = "https://engtwm5daa70tp8.m.pipedream.net/v1/xpinova"
 
 // let URL = "https://en6lcymx0ythtrt.m.pipedream.net/v1/xpinova"
@@ -26,12 +24,6 @@ export async function usePut(route, body){
 export async function useDelete(route, body){
     body.isDelete = true;
     let {data: response} = await axios.post(`${URL}${route}`, body)
-
-    return response
-}
-
-export async function usePatch(route, body){
-    let {data: response} = await axios.patch(`${URL}${route}`, body)
 
     return response
 }

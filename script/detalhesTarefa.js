@@ -9,7 +9,7 @@ let dataTarefa = await useGet(`/tarefas?codTarefa=${codTarefa}`);
 function createList(data){
     let string = ""
     data.forEach(cliente => {
-        string = string + `<li class="getCodCliente" dataKey=${cliente.codCliente}>${cliente.clientes.nomCliente }</li>`
+        string = string + `<li class="getCodCliente" dataKey=${cliente.codCliente}>${cliente.nomCliente }</li>`
     });
     return string
 }
@@ -23,8 +23,8 @@ if(dataTarefa){
     
     let dataCliente = dataTarefa[0]?.clientes;
 
-    nomTarefa.innerText = dataTarefa[0]?.nomTarefa;
-    status.innerText = dataTarefa[0]?.status;
-    descTarefa.innerText = dataTarefa[0]?.descTarefa;
-    clientesAlocados.innerHTML = createList(dataCliente);
+    nomTarefa.innerText = dataTarefa[0]?.nomTarefa || "";
+    status.innerText = dataTarefa[0]?.status || "";
+    descTarefa.innerText = dataTarefa[0]?.descTarefa || "";
+    clientesAlocados.innerHTML = createList(dataCliente) || "";
 }
